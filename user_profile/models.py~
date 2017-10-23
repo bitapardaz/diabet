@@ -1,0 +1,12 @@
+from django.db import models
+
+# Create your models here.
+
+class UserType(models.Model): 
+    title = modles.CharField(max_legnth=100) 
+    
+    
+    
+class UserProfile(models.Model):   
+    title = models.ForeignKey(UserType) 
+    
