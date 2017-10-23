@@ -63,6 +63,22 @@ class UserProfile(models.Model):
     diabetics_type = models.ForeignKey(DiabeticsType,null=True,blank=True)
 
 
-
     def __unicode__(self):
         return self.mobile_number
+
+
+class Question(models.Model):
+    title = models.CharField(max_length=1000)
+    code = models.IntegerField(default=0)
+    front_end_short_code = models.CharField(max_length=100,null=True,blank=True)
+
+    def __unicode__(self):
+        return self.title
+
+class QuestionareItem(models.Model):
+    user = models.ForeignKey(User)
+    question = models.ForeignKey(Question)
+    answer = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return self.question.title  + "-" + self.user.username
